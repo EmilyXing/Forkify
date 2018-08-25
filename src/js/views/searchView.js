@@ -10,6 +10,15 @@ export const clearResults = () => {
     elements.searchResPage.innerHTML = '';
 };
 
+export const highlightSelected = id => {
+    const resultArr = Array.from(document.querySelectorAll('.results__link'));
+    resultArr.forEach(el => {
+        el.classList.remove('results__link--active');
+    })
+
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
+
 export const getInput = () => elements.searchInput.value;
 
 const limitRecipeTitle = (title, limit = 17) => {
@@ -27,10 +36,10 @@ const limitRecipeTitle = (title, limit = 17) => {
     return title;
 };
 
-const renderRecipe = (recipe) => {
+const renderRecipe = recipe => {
     const markup = `
     <li>
-        <a class="results__link results__link--active" href="#${recipe.recipe_id}">
+        <a class="results__link" href="#${recipe.recipe_id}">
             <figure class="results__fig">
                 <img src="${recipe.image_url}" alt="${recipe.title}">
             </figure>
