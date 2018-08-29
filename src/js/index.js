@@ -111,6 +111,9 @@ const controlList = () => {
         state.list = new List();
     }
 
+    // prepare UI
+    listView.clearList();
+
     // add each ingredient to the list and UI
     state.recipe.ingredients.forEach(el => {
         
